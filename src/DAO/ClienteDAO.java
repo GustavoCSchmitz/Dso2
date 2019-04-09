@@ -7,12 +7,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 
 public class ClienteDAO {
     private static ClienteDAO instancia;
-    private HashMap<Integer, Cliente> cliente = new HashMap<>();
+    private ArrayList<Cliente> cliente = new ArrayList<>();
     private final String arquivoCliente = "Cliente.dat";
     
     private ClienteDAO (){
@@ -23,13 +24,15 @@ public class ClienteDAO {
         return cliente.get(cpfPropiretario);
     }
     
+    //arrumar
     public void put(Cliente c){
-        cliente.put(c.getCpf(), c);
+        cliente.add(c);
         this.persist();
     }
     
-    public void remove(long cpf){
-	cliente.remove(cpf);
+    //arrumar
+    public void remove(Cliente c){
+	cliente.remove(c);
 	persist();
     }
     
@@ -59,7 +62,7 @@ public class ClienteDAO {
             FileInputStream fin = new FileInputStream(arquivoCliente);
             ObjectInputStream oi = new ObjectInputStream(fin);
         
-            this.cliente = (HashMap<Integer, Cliente>) oi.readObject();
+            this.cliente = (ArrayList<Cliente>) oi.readObject();
             
             oi.close();
             fin.close();
@@ -83,7 +86,8 @@ public class ClienteDAO {
         return instancia;
     }
     
-    public Collection<Cliente> getList(){
-	return cliente.values();
+    //arrumar
+    public ArrayList<Cliente> getList(){
+	return cliente;
     }
 }
