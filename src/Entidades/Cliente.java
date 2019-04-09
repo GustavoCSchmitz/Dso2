@@ -14,12 +14,10 @@ public class Cliente implements Serializable {
     
     private String nome;
     private long cpf;
-    private long cartaoCredito;
-    private short senhaCartao;
     
-    public Cliente(long cartaoCredito, short senhaCartao){
-        this.senhaCartao = senhaCartao;
-        this.cartaoCredito = cartaoCredito;
+    public Cliente(String nome, long cpf){
+        this.nome = nome;
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -34,24 +32,8 @@ public class Cliente implements Serializable {
         return cpf;
     }
 
-    public short getSenhaCartao() {
-        return senhaCartao;
-    }
-
-    public void setSenhaCartao(short senhaCartao) {
-        this.senhaCartao = senhaCartao;
-    }
-
     public void setCpf(long cpf) {
         this.cpf = cpf;
-    }
-
-    public long getCartaoCredito() {
-        return cartaoCredito;
-    }
-
-    public void setCartaoCredito(long cartaoCredito) {
-        this.cartaoCredito = cartaoCredito;
     }
     
 }
