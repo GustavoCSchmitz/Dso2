@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Produto implements Serializable{
     
     private String nomeProduto;
-    private int codigoDeBarras;
+    public int codigoDeBarras;
     private int preco;
 
     public Produto(String nomeProduto, int codigoDeBarras, int preco){

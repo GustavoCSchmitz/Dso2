@@ -5,6 +5,12 @@
  */
 package Telas;
 
+import Controladores.ControladorCompra;
+import Controladores.ControladorPrincipal;
+import Entidades.Produto;
+import Exceptions.SenhaInvalidaException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +18,15 @@ import javax.swing.JOptionPane;
  * @author Gustavo
  */
 public class TelaSenhaCancelaCompra extends javax.swing.JFrame {
+    
+    private static TelaSenhaCancelaCompra instance;
+    
+    public static TelaSenhaCancelaCompra getinstance(){
+        if(instance == null){
+            instance = new TelaSenhaCancelaCompra();
+        }
+        return instance;
+    }
 
     /**
      * Creates new form TelaSenhaCancelaCompra
@@ -87,8 +102,22 @@ public class TelaSenhaCancelaCompra extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        String senhaDigitada = jTextField1.getText();
+        String senhaFuncionario = "masterkey";
+        if(senhaDigitada.equals(senhaFuncionario)){
+            try {
+                ControladorCompra.getinstance().CancelarCompra();
+                JOptionPane.showMessageDialog(null,"Compra cancelada com sucesso!");
+            } catch (SenhaInvalidaException ex) {
+                Logger.getLogger(TelaSenhaCancelaCompra.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Senha Incorreta");
+            setVisible(false);
+        }
+        
         setVisible(false);
-        JOptionPane.showMessageDialog(null,"Compra cancelada com sucesso!");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

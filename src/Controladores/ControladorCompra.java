@@ -13,7 +13,14 @@ public class ControladorCompra {
     
     private List<Produto> listaDeCompras = new ArrayList<>();
     private static ControladorCompra instance;
-    private int senhaFuncionario = 123456;
+
+    public List<Produto> getProdutosVendidos() {
+        return produtosVendidos;
+    }
+
+    public void setProdutosVendidos(List<Produto> produtosVendidos) {
+        this.produtosVendidos = produtosVendidos;
+    }
     private double caixaLoja;
     private List<Produto> produtosVendidos = new ArrayList<>();
     
@@ -33,7 +40,7 @@ public class ControladorCompra {
     public void insereListaDeCompras(Produto p) throws ItemInexistenteException{
         if(p.getCodigoDeBarras() != -1){
             listaDeCompras.add(p);
-        }else {
+        }else {         
             throw new ItemInexistenteException("Item inexistente");
         }
         
@@ -41,17 +48,13 @@ public class ControladorCompra {
     
     public void removeListaDeCompras(Produto p) throws SenhaInvalidaException{
         //fazer if, se a senha digitada for igual a senhaFuncionario
-        if(true){
-            listaDeCompras.remove(p);
-        }else{
-            throw new SenhaInvalidaException("Senha Invalida");
-        }
+        
+        
     }
     
     public void FinalizarCompra(List<Produto> listaDeCompras){
         double totalDaCompra = 0;
         for(Produto p : listaDeCompras){
-           System.out.println(p);
            totalDaCompra += p.getPreco();
         }
         
@@ -70,7 +73,6 @@ public class ControladorCompra {
     }
     
     public void CancelarCompra() throws SenhaInvalidaException{
-        //fazer if senhaDoFuncionario com senha inserida
         if(true){
             listaDeCompras.clear();
         }else{
@@ -86,14 +88,6 @@ public class ControladorCompra {
         this.listaDeCompras = listaDeCompras;
     }
 
-    public int getSenhaFuncionario() {
-        return senhaFuncionario;
-    }
-
-    public void setSenhaFuncionario(int senhaFuncionario) {
-        this.senhaFuncionario = senhaFuncionario;
-    }
-
     public double getCaixaLoja() {
         return caixaLoja;
     }
@@ -101,5 +95,6 @@ public class ControladorCompra {
     public void setCaixaLoja(double caixaLoja) {
         this.caixaLoja = caixaLoja;
     }
+    
     
 }

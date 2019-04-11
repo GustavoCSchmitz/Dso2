@@ -5,11 +5,22 @@
  */
 package Telas;
 
+import Controladores.ControladorPrincipal;
+
 /**
  *
  * @author Gustavo
  */
 public class TelaConfirmacao extends javax.swing.JFrame {
+    
+    private static TelaConfirmacao instance;
+    
+    public static TelaConfirmacao getinstance(){
+        if(instance == null){
+            instance = new TelaConfirmacao();
+        }
+        return instance;
+    }
 
     /**
      * Creates new form TelaSenhaCancelaCompra
@@ -94,17 +105,15 @@ public class TelaConfirmacao extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        TelaCompra telaCompra = new TelaCompra();
-        setVisible(false);
-        telaCompra.setVisible(true);
+        ControladorPrincipal.getinstance().exibeTelaCompra();
+        dispose();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        TelaSenhaCancelaCompra telaCancela = new TelaSenhaCancelaCompra();
-        setVisible(false);
-        telaCancela.setVisible(true);
+        ControladorPrincipal.getinstance().exibeTelaSenhaCancelaCompra();
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

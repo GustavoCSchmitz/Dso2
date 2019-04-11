@@ -1,5 +1,7 @@
 package Telas;
 
+import Controladores.ControladorPrincipal;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,11 +12,22 @@ package Telas;
  * @author Gustavo
  */
 public class TelaInicial extends javax.swing.JFrame {
-
+    
+    private static TelaInicial instance;
+    
+    public static TelaInicial getinstance(){
+        if(instance == null){
+            instance = new TelaInicial();
+        }
+        return instance;
+    }
     /**
      * Creates new form TelaInicialUI
      */
+    
+    
     public TelaInicial() {
+        
         initComponents();
     }
 
@@ -95,14 +108,8 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here: 
-       if(evt.getSource() == jButton1){
-         //TelaCartaoUI tela2 = new TelaCartaoUI();
-         TelaCompra tela2 = new TelaCompra();
-         //TelaFinalUI tela2 = new TelaFinalUI();
-         setVisible(false);
-         tela2.setVisible(true);
-       }
-       
+         ControladorPrincipal.getinstance().exibeTelaCompra();
+         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

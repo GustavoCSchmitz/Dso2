@@ -1,8 +1,17 @@
 package Controladores;
 
 import Entidades.Produto;
+import Exceptions.ItemInexistenteException;
+import Telas.TelaCompra;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,5 +44,12 @@ public class ControladorProduto{
         for(Produto p : produtosEstoque){
             System.out.println(p.getNomeProduto()+ p.getCodigoDeBarras() + p.getPreco());
         }
+    }
+    
+    public Produto getProdutoPeloCodigo(int codigo) {
+		return produtosEstoque.stream()
+			.filter(produto -> produto.codigoDeBarras == codigo)
+			.findFirst()
+                        .orElse(null);
     }
 }

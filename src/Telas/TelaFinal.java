@@ -11,6 +11,14 @@ package Telas;
  */
 public class TelaFinal extends javax.swing.JFrame {
 
+    private static TelaFinal instance;
+    
+    public static TelaFinal getinstance(){
+        if(instance == null){
+            instance = new TelaFinal();
+        }
+        return instance;
+    }
     /**
      * Creates new form TelaFinalUI
      */
