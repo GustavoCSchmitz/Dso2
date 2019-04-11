@@ -5,11 +5,13 @@
  */
 package Controladores;
 
+import Telas.TelaBalanco;
 import Telas.TelaCartao;
 import Telas.TelaCompra;
 import Telas.TelaConfirmacao;
 import Telas.TelaFinal;
 import Telas.TelaInicial;
+import Telas.TelaSenhaBalanco;
 import Telas.TelaSenhaCancelaCompra;
 
 
@@ -56,5 +58,14 @@ public class ControladorPrincipal {
     public void exibeTelaSenhaCancelaCompra(){
         TelaSenhaCancelaCompra.getinstance().setVisible(true);
     }
+
+    public void exibeTelaSenhaBalanco() {
+        TelaSenhaBalanco.getinstance().setVisible(true);
+    }
+    
+      public void exibeTelaBalanco() {
+        TelaBalanco.getinstance().setVisible(true);
+    }
+       
        
 }
