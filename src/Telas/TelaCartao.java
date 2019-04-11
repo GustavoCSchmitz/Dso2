@@ -5,11 +5,22 @@
  */
 package Telas;
 
+import Controladores.ControladorCompra;
+
 /**
  *
  * @author Morgana Foster
  */
 public class TelaCartao extends javax.swing.JFrame {
+    
+    private static TelaCartao instance;
+    
+    public static TelaCartao getinstance(){
+        if(instance == null){
+            instance = new TelaCartao();
+        }
+        return instance;
+    }
 
     /**
      * Creates new form TelaCartaoUI
@@ -63,6 +74,11 @@ public class TelaCartao extends javax.swing.JFrame {
         jButton1.setText("Ok");
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,6 +158,14 @@ public class TelaCartao extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        //Continuar...
+        if(jTextField1.getText().length() == 16 && jTextField2.getText() != null && jTextField3.getText() != null && jTextField4.getText() != null){
+            //ControladorCompra.getinstance().FinalizarCompra();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
