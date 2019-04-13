@@ -63,9 +63,8 @@ public class ControladorPrincipal {
         TelaSenhaBalanco.getinstance().setVisible(true);
     }
     
-      public void exibeTelaBalanco() {
+    public void exibeTelaBalanco() {
         TelaBalanco.getinstance().setVisible(true);
     }
-       
-       
+    
 }

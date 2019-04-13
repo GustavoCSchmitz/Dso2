@@ -11,9 +11,12 @@ import Controladores.ControladorProduto;
 import Entidades.Produto;
 import Exceptions.ItemInexistenteException;
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +26,26 @@ import javax.swing.table.DefaultTableModel;
 public class TelaCompra extends javax.swing.JFrame {
     
     private static TelaCompra instance;
+    private ArrayList<Produto> listaDeUmaCompra = new ArrayList<>();
+   
+
+    
+
+    public JTable getTabelaCompras() {
+        return TabelaCompras;
+    }
+
+    public ArrayList<Produto> getListaDeUmaCompra() {
+        return listaDeUmaCompra;
+    }
+
+    public void setListaDeUmaCompra(ArrayList<Produto> listaDeUmaCompra) {
+        this.listaDeUmaCompra = listaDeUmaCompra;
+    }
+
+    public void setTabelaCompras(JTable TabelaCompras) {
+        this.TabelaCompras = TabelaCompras;
+    }
     
     public static TelaCompra getinstance(){
         if(instance == null){
@@ -57,8 +80,7 @@ public class TelaCompra extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        totalCompra = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,11 +142,12 @@ public class TelaCompra extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setText("Total R$:");
-
-        totalCompra.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        totalCompra.setText("0,00");
+        jButton5.setText("Voltar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,26 +158,25 @@ public class TelaCompra extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(292, 292, 292))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoCodBarra))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoCodBarra))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(jButton5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalCompra)
-                .addGap(177, 177, 177))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,10 +199,8 @@ public class TelaCompra extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(totalCompra))
-                .addGap(103, 103, 103))
+                .addComponent(jButton5)
+                .addGap(99, 99, 99))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -204,28 +224,26 @@ public class TelaCompra extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int codigo = parseInt(campoCodBarra.getText());
-            if(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo) == null){
-                JOptionPane.showMessageDialog(null,"Este produto não está cadastrado");
-            }else{
-                try {
-                    ControladorCompra.getinstance().insereListaDeCompras(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo));
-                    DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
-                    Object[] dados = {campoCodBarra.getText(),ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getNomeProduto(),ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getPreco()};
-                    dtLista.addRow(dados);
-    //                totalCompra
-    //                
-    //                totalCompra.setText(Integer.toString(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getPreco()));
+        if(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo) == null){
+        JOptionPane.showMessageDialog(null,"Este produto não está cadastrado");
+        }else{
+            try {
+               ControladorCompra.getinstance().insereListaDeCompras(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo));
+                listaDeUmaCompra.add(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo));
+                DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
+                Object[] dados = {campoCodBarra.getText(),ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getNomeProduto(),ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getPreco()};
+                dtLista.addRow(dados);
 
-                } catch (ItemInexistenteException ex) {
-                    Logger.getLogger(TelaCompra.class.getName()).log(Level.SEVERE, null, ex);
-                }  
-        
-            }   
+            } catch (ItemInexistenteException ex) {
+                Logger.getLogger(TelaCompra.class.getName()).log(Level.SEVERE, null, ex);
+            }  
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ControladorPrincipal.getinstance().exibeTelaCartao();
+        ControladorPrincipal.getinstance().exibeTelaCartao();        
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -234,8 +252,22 @@ public class TelaCompra extends javax.swing.JFrame {
         if(TabelaCompras.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null, "Selecione o produto que deseja excluir");
         }else{
-            DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
-            dtLista.removeRow(TabelaCompras.getSelectedRow());
+            int indiceProdutoSelecinadoLinha = TabelaCompras.getSelectedRow();
+            String senha = JOptionPane.showInputDialog("Senha do funcionario");
+            
+            if(senha.equals("masterkey")){
+                DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
+                int valorProdutoSelecionado = (int)TabelaCompras.getValueAt(indiceProdutoSelecinadoLinha,2 );
+                TelaCartao.getinstance().setTotalDeUmaCompra(TelaCartao.getinstance().getTotalDeUmaCompra() - valorProdutoSelecionado);
+                dtLista.removeRow(TabelaCompras.getSelectedRow());
+                listaDeUmaCompra.remove(ControladorProduto.getinstance().getProdutoPeloPreco(valorProdutoSelecionado));
+                JOptionPane.showMessageDialog(null, "Item excluído com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Senha incorreta");
+                ControladorPrincipal.getinstance().exibeTelaCompra();
+                dispose();
+            }
+            
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -248,6 +280,24 @@ public class TelaCompra extends javax.swing.JFrame {
     private void TabelaComprasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_TabelaComprasAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_TabelaComprasAncestorAdded
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        ControladorPrincipal.getinstance().exibeTelaInicial();
+        DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
+        dtLista.setRowCount(0);
+        listaDeUmaCompra.clear();
+        campoCodBarra.setText(null);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    public JTextField getCampoCodBarra() {
+        return campoCodBarra;
+    }
+
+    public void setCampoCodBarra(JTextField campoCodBarra) {
+        this.campoCodBarra = campoCodBarra;
+    }
 
     /**
      * @param args the command line arguments
@@ -291,11 +341,10 @@ public class TelaCompra extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel totalCompra;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,14 +13,6 @@ public class ControladorCompra {
     
     private List<Produto> listaDeCompras = new ArrayList<>();
     private static ControladorCompra instance;
-
-    public List<Produto> getProdutosVendidos() {
-        return produtosVendidos;
-    }
-
-    public void setProdutosVendidos(List<Produto> produtosVendidos) {
-        this.produtosVendidos = produtosVendidos;
-    }
     private double caixaLoja;
     private List<Produto> produtosVendidos = new ArrayList<>();
     
@@ -65,12 +57,6 @@ public class ControladorCompra {
         caixaLoja += totalDaCompra;
     }
 
-    public void ImprimirCupom(List<Produto> listaDeCompras){
-        //Temporário esse System.out
-        for(Produto p : listaDeCompras){
-            System.out.println(p);
-        }
-    }
     
     public void CancelarCompra() throws SenhaInvalidaException{
         if(true){
@@ -94,6 +80,14 @@ public class ControladorCompra {
 
     public void setCaixaLoja(double caixaLoja) {
         this.caixaLoja = caixaLoja;
+    }
+    
+    public List<Produto> getProdutosVendidos() {
+        return produtosVendidos;
+    }
+
+    public void setProdutosVendidos(List<Produto> produtosVendidos) {
+        this.produtosVendidos = produtosVendidos;
     }
     
     

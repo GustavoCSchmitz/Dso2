@@ -8,7 +8,7 @@ public class Produto implements Serializable{
     
     private String nomeProduto;
     public int codigoDeBarras;
-    private int preco;
+    public int preco;
 
     public Produto(String nomeProduto, int codigoDeBarras, int preco){
         this.nomeProduto = nomeProduto;

@@ -52,4 +52,11 @@ public class ControladorProduto{
 			.findFirst()
                         .orElse(null);
     }
+    
+    public Produto getProdutoPeloPreco(int preco) {
+		return produtosEstoque.stream()
+			.filter(produto -> produto.preco == preco)
+			.findFirst()
+                        .orElse(null);
+    }
 }

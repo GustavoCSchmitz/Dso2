@@ -5,6 +5,11 @@
  */
 package Telas;
 
+import Controladores.ControladorPrincipal;
+import java.awt.print.PrinterException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Morgana Foster
@@ -45,7 +50,12 @@ public class TelaFinal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("    Compra Concluída com Sucesso!");
 
-        jButton1.setText("Imprimir Cupom Fiscal");
+        jButton1.setText("Imprimir Cupom");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,6 +93,17 @@ public class TelaFinal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            TelaCompra.getinstance().getTabelaCompras().print();
+        } catch (PrinterException ex) {
+            Logger.getLogger(TelaFinal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ControladorPrincipal.getinstance().exibeTelaInicial();
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
