@@ -109,7 +109,6 @@ public class TelaBalanco extends javax.swing.JFrame {
 
     private void jLabel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel3AncestorAdded
         // TODO add your handling code here:
-        System.out.print(ControladorCompra.getinstance().getCaixaLoja());
         jLabel3.setText(Double.toString(ControladorCompra.getinstance().getCaixaLoja()));
     }//GEN-LAST:event_jLabel3AncestorAdded
 
