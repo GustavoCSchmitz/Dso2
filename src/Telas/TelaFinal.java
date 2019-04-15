@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Morgana Foster
+ * @author Ivo Guilherme
  */
 public class TelaFinal extends javax.swing.JFrame {
 

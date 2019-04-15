@@ -39,8 +39,6 @@ public class ControladorCompra {
     }
     
     public void removeListaDeCompras(Produto p) throws SenhaInvalidaException{
-        //fazer if, se a senha digitada for igual a senhaFuncionario
-        
         
     }
     

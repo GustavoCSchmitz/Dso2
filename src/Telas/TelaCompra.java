@@ -27,9 +27,6 @@ public class TelaCompra extends javax.swing.JFrame {
     
     private static TelaCompra instance;
     private ArrayList<Produto> listaDeUmaCompra = new ArrayList<>();
-   
-
-    
 
     public JTable getTabelaCompras() {
         return TabelaCompras;
@@ -222,40 +219,40 @@ public class TelaCompra extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCodBarraActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        int codigo = parseInt(campoCodBarra.getText());
-        if(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo) == null){
-        JOptionPane.showMessageDialog(null,"Este produto não está cadastrado");
-        }else{
-            try {
-               ControladorCompra.getinstance().insereListaDeCompras(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo));
+        try {
+            if(campoCodBarra.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Este produto não está cadastrado");
+            } else {
+                int codigo = parseInt(campoCodBarra.getText());
+                if(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo) == null){
+                     JOptionPane.showMessageDialog(null,"Este produto não está cadastrado");
+                } else {
+                ControladorCompra.getinstance().insereListaDeCompras(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo));
                 listaDeUmaCompra.add(ControladorProduto.getinstance().getProdutoPeloCodigo(codigo));
                 DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
                 Object[] dados = {campoCodBarra.getText(),ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getNomeProduto(),ControladorProduto.getinstance().getProdutoPeloCodigo(codigo).getPreco()};
                 dtLista.addRow(dados);
+               }
+            }
 
-            } catch (ItemInexistenteException ex) {
-                Logger.getLogger(TelaCompra.class.getName()).log(Level.SEVERE, null, ex);
-            }  
-
-        }
+        } catch (ItemInexistenteException ex) {
+            Logger.getLogger(TelaCompra.class.getName()).log(Level.SEVERE, null, ex);
+        }  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         ControladorPrincipal.getinstance().exibeTelaCartao();        
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         if(TabelaCompras.getSelectedRow() == -1){
             JOptionPane.showMessageDialog(null, "Selecione o produto que deseja excluir");
         }else{
             int indiceProdutoSelecinadoLinha = TabelaCompras.getSelectedRow();
             String senha = JOptionPane.showInputDialog("Senha do funcionario");
-            
-            if(senha.equals("masterkey")){
+            String senhaFuncionario = ("masterkey");
+            if(senha.equals(senhaFuncionario)){
                 DefaultTableModel dtLista = (DefaultTableModel) TabelaCompras.getModel();
                 int valorProdutoSelecionado = (int)TabelaCompras.getValueAt(indiceProdutoSelecinadoLinha,2 );
                 TelaCartao.getinstance().setTotalDeUmaCompra(TelaCartao.getinstance().getTotalDeUmaCompra() - valorProdutoSelecionado);
@@ -266,7 +263,7 @@ public class TelaCompra extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Senha incorreta");
                 ControladorPrincipal.getinstance().exibeTelaCompra();
                 dispose();
-            }
+           }
             
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -348,3 +345,5 @@ public class TelaCompra extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
+
+
