@@ -21,14 +21,26 @@ public class Main {
         TelaInicial Tela1 = new TelaInicial();    
         Tela1.setVisible(true);
    
-        Produto p1 = new Produto("Café",6558,2);
-        Produto p2 = new Produto("Azeite",123,15);
-        Produto p3 = new Produto("Arroz",68,45);
-        Produto p4 = new Produto("Ovo",9321,12);
+        Produto p1 = new Produto("Café",1,2);
+        Produto p2 = new Produto("Azeite",2,3);
+        Produto p3 = new Produto("Arroz",3,5);
+        Produto p4 = new Produto("Ovo",4,8);
+        Produto p5 = new Produto("Leite",1,2);
+        Produto p6 = new Produto("Feijão",1,6);
+        Produto p7 = new Produto("Macarrão",1,4);
+        Produto p8 = new Produto("Sabonete",1,1);
+        Produto p9 = new Produto("Cerveja",1,3);
+        Produto p10 = new Produto("Pão",1,5);
         ControladorProduto.getinstance().cadastraProduto(p1);
         ControladorProduto.getinstance().cadastraProduto(p2);
         ControladorProduto.getinstance().cadastraProduto(p3);
         ControladorProduto.getinstance().cadastraProduto(p4);
+        ControladorProduto.getinstance().cadastraProduto(p5);
+        ControladorProduto.getinstance().cadastraProduto(p6);
+        ControladorProduto.getinstance().cadastraProduto(p7);
+        ControladorProduto.getinstance().cadastraProduto(p8);
+        ControladorProduto.getinstance().cadastraProduto(p9);
+        ControladorProduto.getinstance().cadastraProduto(p10);
 
     }
 }
